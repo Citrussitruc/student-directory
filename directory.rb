@@ -1,15 +1,15 @@
 students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november},
-  {name: "Darth Vader", cohort: :november},
-  {name: "Nurse Ratched", cohort: :november},
-  {name: "Michael Corleone", cohort: :november},
-  {name: "Alex DeLarge", cohort: :november},
-  {name: "The Wicked Witch of the West", cohort: :november},
-  {name: "Terminator", cohort: :november},
-  {name: "Freddy Krueger", cohort: :november},
-  {name: "The Joker", cohort: :november},
-  {name: "Joffrey Baratheon", cohort: :november},
-  {name: "Norman Bates", cohort: :november}
+  {name: "Dr. Hannibal Lecter", cohort: :november, from: :USA},
+  {name: "Darth Vader", cohort: :november, from: :Tatooine},
+  {name: "Nurse Ratched", cohort: :november, from: :USA},
+  {name: "Michael Corleone", cohort: :november, from: :USA},
+  {name: "Alex DeLarge", cohort: :november, from: :USA},
+  {name: "The Wicked Witch of the West", cohort: :november, from: :The_West},
+  {name: "Terminator", cohort: :november, from: :The_Future},
+  {name: "Freddy Krueger", cohort: :november, from: :USA},
+  {name: "The Joker", cohort: :november, from: :Gotham},
+  {name: "Joffrey Baratheon", cohort: :november, from: :Westeros},
+  {name: "Norman Bates", cohort: :november, from: :USA}
 ]
 
 def print_header
@@ -19,14 +19,14 @@ end
 
 def print(students)
   students.each_with_index do |student, index|
-    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    puts "#{index + 1}. #{student[:name]}, #{student[:from]} (#{student[:cohort]} cohort)"
   end
 end
 
 def while_print(students)
   i = 0
   while i < students.length
-    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort)"
+    puts "#{i + 1}. #{students[i][:name]}, #{students[i][:from]} (#{students[i][:cohort]} cohort)"
     i += 1
   end
 end
@@ -70,10 +70,10 @@ def shorter_than_12_chars(students)
 end
 
 # print_header
-# print(students)
+print(students)
 # print_footer(students)
 
-# while_print(students)
+while_print(students)
 
 # new_cohort = input_students
 # print(new_cohort)
