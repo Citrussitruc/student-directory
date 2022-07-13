@@ -1,16 +1,16 @@
-# students = [
-#   {name: "Dr. Hannibal Lecter", cohort: :november},
-#   {name: "Darth Vader", cohort: :november},
-#   {name: "Nurse Ratched", cohort: :november},
-#   {name: "Michael Corleone", cohort: :november},
-#   {name: "Alex DeLarge", cohort: :november},
-#   {name: "The Wicked Witch of the West", cohort: :november},
-#   {name: "Terminator", cohort: :november},
-#   {name: "Freddy Krueger", cohort: :november},
-#   {name: "The Joker", cohort: :november},
-#   {name: "Joffrey Baratheon", cohort: :november},
-#   {name: "Norman Bates", cohort: :november}
-# ]
+students = [
+  {name: "Dr. Hannibal Lecter", cohort: :november},
+  {name: "Darth Vader", cohort: :november},
+  {name: "Nurse Ratched", cohort: :november},
+  {name: "Michael Corleone", cohort: :november},
+  {name: "Alex DeLarge", cohort: :november},
+  {name: "The Wicked Witch of the West", cohort: :november},
+  {name: "Terminator", cohort: :november},
+  {name: "Freddy Krueger", cohort: :november},
+  {name: "The Joker", cohort: :november},
+  {name: "Joffrey Baratheon", cohort: :november},
+  {name: "Norman Bates", cohort: :november}
+]
 
 def print_header
   puts "The students of Villans Academy"
@@ -18,8 +18,8 @@ def print_header
 end
 
 def print(students)
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  students.each_with_index do |student, index|
+    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
@@ -28,24 +28,45 @@ def print_footer(students)
 end
 
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
+  puts "Please enter the names of the student and then which cohort"
+  puts "To skip adding info, just press return"
   # To create an empty array
-  students = []
+  new_cohort = []
   # To get the first name
+  puts "name"
   name = gets.chomp
+  puts "cohort"
+  cohort = gets.chomp.to_s
   # while name is not empty, repeat this code
   while !name.empty? do
     # Add student hash to array
-    students << {name: name, cohort: :november}
+    new_cohort << {name: name, cohort: cohort}
     # Get another name
+    puts "name"
     name = gets.chomp
+    puts "cohort"
+    cohort = gets.chomp.to_s
   end 
   # Return array
-  students
+  new_cohort
 end
 
-students = input_students
-print_header
-print(students)
-print_footer(students)
+def specific_letter(students)
+  puts "Which letter would you like to search with"
+  letter = gets.chomp
+
+  filtered_students = students.select {|student|student[:name][0] == letter}
+  
+  puts filtered_students
+end
+
+
+# print_header
+# print(students)
+# print_footer(students)
+
+# new_cohort = input_students
+# print(new_cohort)
+
+
+specific_letter(students)
