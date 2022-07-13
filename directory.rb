@@ -1,29 +1,29 @@
-students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november, from: :USA},
-  {name: "Darth Vader", cohort: :november, from: :Tatooine},
-  {name: "Nurse Ratched", cohort: :november, from: :USA},
-  {name: "Michael Corleone", cohort: :november, from: :NY},
-  {name: "Alex DeLarge", cohort: :november, from: :England},
-  {name: "The Wicked Witch of the West", cohort: :november, from: :The_West},
-  {name: "Terminator", cohort: :november, from: :The_Future},
-  {name: "Freddy Krueger", cohort: :november, from: :USA},
-  {name: "The Joker", cohort: :november, from: :Gotham},
-  {name: "Joffrey Baratheon", cohort: :november, from: :Westeros},
-  {name: "Norman Bates", cohort: :december, from: :USA}
-]
+# students = [
+#   {name: "Dr. Hannibal Lecter", cohort: :november, from: :USA},
+#   {name: "Darth Vader", cohort: :november, from: :Tatooine},
+#   {name: "Nurse Ratched", cohort: :november, from: :USA},
+#   {name: "Michael Corleone", cohort: :november, from: :NY},
+#   {name: "Alex DeLarge", cohort: :november, from: :England},
+#   {name: "The Wicked Witch of the West", cohort: :november, from: :The_West},
+#   {name: "Terminator", cohort: :november, from: :The_Future},
+#   {name: "Freddy Krueger", cohort: :november, from: :USA},
+#   {name: "The Joker", cohort: :november, from: :Gotham},
+#   {name: "Joffrey Baratheon", cohort: :november, from: :Westeros},
+#   {name: "Norman Bates", cohort: :december, from: :USA}
+# ]
 
 def print_header
   puts "The students of Villans Academy".center(200)
   puts "-------------------------------".center(200)
 end
 
-def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index + 1}. #{student[:name]}, #{student[:from]} (#{student[:cohort]})".center(200)
-  end
-end
+# def print(students)
+#   students.each_with_index do |student, index|
+#     puts "#{index + 1}. #{student[:name]}, #{student[:from]} (#{student[:cohort]})".center(200)
+#   end
+# end
 
-def while_print(students)
+def print(students)
   i = 0
   while i < students.length
     puts "#{i + 1}. #{students[i][:name]}, #{students[i][:from]} (#{students[i][:cohort]})".center(200)
@@ -83,16 +83,26 @@ def group_by_cohort(students)
   end
 end
 
-# print_header
-# print(students)
-# print_footer(students)
+def interactive_menu
+  students = []
+  loop do
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit"
+    selection = gets.chomp
+    case selection
+    when "1"
+      students = input_students(students)
+    when "2"
+      print_header
+      print(students)
+      print_footer(students)
+    when "9"
+      exit
+    else
+      puts "I don't know what you meant, try again"
+    end
+  end
+end
 
-# # while_print(students)
-
-# print input_students(students)
-
-# specific_letter(students)
-
-# shorter_than_12_chars(students)
-
-group_by_cohort(students)
+interactive_menu
