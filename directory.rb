@@ -23,6 +23,14 @@ def print(students)
   end
 end
 
+def while_print(students)
+  i = 0
+  while i < students.length
+    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort)"
+    i += 1
+  end
+end
+
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
@@ -54,25 +62,22 @@ end
 def specific_letter(students)
   puts "Which letter would you like to search with"
   letter = gets.chomp
-
-  filtered_students = students.select {|student|student[:name][0] == letter}
-  
-  puts filtered_students
+  students.select { |student| student[:name][0] == letter }.each { |student| puts student[:name] }
 end
 
 def shorter_than_12_chars(students)
-  filtered_students = students.select {|student|student[:name].length < 12}
-  
-  puts filtered_students
+  students.select { |student| student[:name].length < 12 }.each { |student| puts student[:name] }
 end
 
 # print_header
 # print(students)
 # print_footer(students)
 
+# while_print(students)
+
 # new_cohort = input_students
 # print(new_cohort)
 
 
 # specific_letter(students)
-shorter_than_12_chars(students)
+# shorter_than_12_chars(students)
