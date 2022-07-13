@@ -60,6 +60,11 @@ def specific_letter(students)
   puts filtered_students
 end
 
+def shorter_than_12_chars(students)
+  filtered_students = students.select {|student|student[:name].length < 12}
+  
+  puts filtered_students
+end
 
 # print_header
 # print(students)
@@ -69,4 +74,5 @@ end
 # print(new_cohort)
 
 
-specific_letter(students)
+# specific_letter(students)
+shorter_than_12_chars(students)
