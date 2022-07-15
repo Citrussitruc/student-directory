@@ -14,11 +14,11 @@ end
 
 def get_student_info
   puts "name"
-  name = STDIN.gets.chomp
+  name = STDIN.gets.chomp.capitalize
   puts "cohort"
-  cohort = STDIN.gets.chomp
+  cohort = STDIN.gets.chomp.downcase
   puts "from"
-  from = STDIN.gets.chomp
+  from = STDIN.gets.chomp.upcase
   [name, cohort, from]
 end
 
@@ -88,12 +88,12 @@ end
 
 def specific_letter
   puts "Which letter would you like to search with"
-  letter = gets.chomp.upcase
+  letter = gets.chomp.capitalize
   @students.select { |student| student[:name][0] == letter }.each { |student| puts student[:name] }
 end
 
 def shorter_than_12_chars
-  @@students.select { |student| student[:name].length < 12 }.each { |student| puts student[:name] }
+  @students.select { |student| student[:name].length < 12 }.each { |student| puts student[:name] }
 end
 
 def group_by_cohort
